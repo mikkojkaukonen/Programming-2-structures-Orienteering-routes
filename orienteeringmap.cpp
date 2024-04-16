@@ -5,7 +5,7 @@
  *
  * Kuvaus:
  *
- *   Ohjelma, joka käynnistyessään lukee suunnistusreitteihin liittyviä
+ * Ohjelma, joka käynnistyessään lukee suunnistusreitteihin liittyviä
  * tietoja tiedostosta, tallentaa ne sopivaan tietorakenteeseen ja
  * antaa käyttäjälle mahdollisuuden tehdä hakuja kyseiseen tietorakenteeseen.
  *   Ohjelmalle annetaan syötteenä tiedosto, jonka kullakin rivillä on
@@ -44,12 +44,47 @@
  *   tasamaata.
  *
  *
- * Ohjelman kirjoittaja
- * Nimi: Mikko Kaukonen
- * Opiskelijanumero: K65167
- * Käyttäjätunnus: nvmika
- * ( https://course-gitlab.tuni.fi/comp.cs.110-ohj-2_2022-KEVAT/nvmika.git )
- * E-Mail: mikko.kaukonen@tuni.fi
+ *  Description:
+ *
+ * A program that, upon startup, reads navigation route-related
+ * information from a file, stores it in a suitable data structure, and
+ * allows the user to make queries to this data structure.
+ *   The program is given a file as input, where each line contains
+ * a variable number of fields separated by semicolons.
+ * The first line specifies the size of the map (coordinate system): width and
+ * height (both positive) as integers. The subsequent lines list
+ * the desired number of control points. The list ends with a line containing
+ * only the word ROUTES. For each control point, the name of the control point,
+ * its x- and y-coordinates, the terrain height at that control point in meters,
+ * and the identifier of the control point are provided.
+ * After the line containing ROUTES, the file lists the routes,
+ * each on its own line. For each route, its name and the names of
+ * the control points through which the route passes are listed. A route can have
+ * any (finite) number of control points. A route can only contain control points
+ * that have been presented in the beginning of the file. Routes are unidirectional.
+ * Both control point names and route names can consist of multiple words.
+ *
+ *   Commands implemented in the program:
+ *
+ *   QUIT - The program terminates with a return value of EXIT_SUCCESS
+ *   without printing anything.
+ *   MAP - Command prints the map.
+ *   ROUTES - Command prints all given routes in alphabetical order,
+ *   each on its own line.
+ *   ROUTE <route> - Command prints the control points belonging to the given route
+ *   on separate lines with arrows between them. Control points are printed in the
+ *   order they appear in the input file.
+ *   POINTS - Command prints the control points and their identifiers
+ *   in alphabetical order according to the control point names.
+ *   LENGTH <route> - Command prints the length of the given route. This is calculated
+ *   as the sum of distances between consecutive control points on the route.
+ *   RISE <control point> - Command prints the greatest continuous ascent that can be found
+ *   when progressing along any route starting from the given control point.
+ *   Continuous ascent refers to a sub-route starting at the given control point
+ *   where there is no descent, only ascent or flat terrain.
+ *
+ *
+ * Writer: Mikko Kaukonen
  * */
 
 
